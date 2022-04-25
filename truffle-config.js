@@ -3,13 +3,17 @@ module.exports = {
     local: {
       host: "localhost",
       port: 7545,
-      network_id: "*" // Match any network id
+      network_id: "*"
+    },
+    loc_development_development: {
+      network_id: "*",
+      port: 7545,
+      host: "127.0.0.1"
     }
   },
-  // // To run contract with the latest compiler, uncomment lines 10-14 below:
-  compilers: { 
+  compilers: {
     solc: {
-      version: "^0.8",    // Fetch latest 0.8.x Solidity compiler 
+      version: "^0.8"
     }
   }
 };

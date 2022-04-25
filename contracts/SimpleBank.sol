@@ -86,6 +86,7 @@ contract SimpleBank {
       // 5. return the balance of sndr of this transaction
       require(enrolled[msg.sender] == true, "only enrolled clients");
       balances[msg.sender] += msg.value;
+      emit LogDepositMade(msg.sender, msg.value);
       return balances[msg.sender];
     }
 
@@ -107,5 +108,7 @@ contract SimpleBank {
 
       // 3. Emit the appropriate event for this message
       balances[msg.sender] -= withdrawAmount;
+      payable(msg.sender).transfer(withdrawAmount);
+      emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
     }
 }
